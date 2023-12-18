@@ -17,7 +17,7 @@ M_BuildTargetXl=["Init"]
 M_BuildTargetCignal=["Init"]
 M_BuildTargetTestauto=["Init"]
 //////////////////
-
+echo "strart env assignment"
 env.M_Defaulttarget="wow"
 env.M_Project="VoltStb"
 env.M_RepositoryUrl="ssh://git@git.ifeelsmart.net:7999/VOLT/stb.git"
@@ -79,9 +79,11 @@ M_BuildTargetCignal.remove("Init")
 // trigger-e2e
 M_BuildTargetTestauto.push("trigger-e2e")
 M_BuildTargetTestauto.remove("Init")
+echo "strart jobs "
 
 job.start()
 pipeline.workspace(M_BuildTarget,"SCM","start")
+echo "stop  job"
 
 if ( "${params.wow}" == 'true' ){
     pipeline.exec(M_BuildTarget,"${env.M_Scheme}","true")
